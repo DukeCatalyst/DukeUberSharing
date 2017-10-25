@@ -4,6 +4,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    if !user_signed_in?
+      redirect_to('/users/sign_in')
+    end 
     @posts = Post.all
   end
 

@@ -31,12 +31,16 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><%= link_to 'Home', :posts %></li>
           <li><a href="#about">Posts</a></li>
           <li><a href="#contact">About</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="https://www.google.com">Sign In</a></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Logout', :destroy_user_session, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to 'Login', :new_user_session %></li>
+          <% end %>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
