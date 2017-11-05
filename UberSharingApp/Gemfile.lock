@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/flori/json.git
+  revision: 7f4cfd853f2c919d854fb95548a19980feff17e8
+  branch: v1.8
+  specs:
+    json (1.8.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -211,6 +218,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   jbuilder (~> 2.5)
+  json!
   listen (>= 3.0.5, < 3.2)
   pg
   puma (~> 3.7)
