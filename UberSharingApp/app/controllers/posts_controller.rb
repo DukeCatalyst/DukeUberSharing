@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     if !user_signed_in?
       redirect_to('/users/sign_in')
-    end 
+    end
     @posts = Post.all
   end
 
@@ -72,6 +72,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:name, :title, :content)
+      params.require(:post).permit(:destination, :date, :time, :number_passengers, :departure_location)
     end
 end

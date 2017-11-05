@@ -12,19 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :post_name %>
+    <%= form.label :date %>
+    <%= form.text_field :date, id: :post_date %>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+    <%= form.label :destination %>
+    <%= form.text_field :destination, id: :post_destination %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, id: :post_content %>
+    <%= form.label :departure_location %>
+    <%= form.text_field :departure_location, id: :post_departure_location %>
   </div>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.text_area :time, id: :post_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number_passengers %>
+    <%= form.text_area :number_passengers, id: :post_passengers %>
+  </div>
+
+
 
   <div class="actions">
     <%= form.submit %>

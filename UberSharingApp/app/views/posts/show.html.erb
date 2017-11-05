@@ -1,18 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @post.name %>
+  <strong>Destination:</strong>
+  <%= @post.destination %>
 </p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+  <strong>Pickup Location:</strong>
+  <%= @post.departure_location %>
 </p>
 
 <p>
-  <strong>Content:</strong>
-  <%= @post.content %>
+  <strong>Date of Departure:</strong>
+  <%= @post.date %>
+</p>
+
+<p>
+  <strong>Time of Departure:</strong>
+  <%= @post.time %>
+</p>
+
+<p>
+  <strong>Maximum Number of Passengers:</strong>
+  <%= @post.number_passengers %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

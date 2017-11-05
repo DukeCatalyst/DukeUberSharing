@@ -6,10 +6,19 @@
     <% @posts.each do |post| %>
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <%= post.name %>
+          Destination:
+          <%= post.destination %>
         </div>
         <div class="panel-body">
-          <td><%= post.content %>
+          Pickup Location: <td><%= post.departure_location %>
+        </div>
+        <div class="panel-body">
+          Departure Time:
+          <td><%= post.date %> <td><%= post.time %>
+        </div>
+        <div class="panel-body">
+          Maximum Number of Passengers: 
+          <td><%= post.number_passengers %>
         </div>
         <div class="panel-footer">
         <%= link_to 'Show', post %>
