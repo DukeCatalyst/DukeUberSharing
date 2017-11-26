@@ -1,22 +1,58 @@
-<p>
-  <strong>Destination:</strong>
-  <%= @post.destination %>
-</p>
+<br/>
+<div class="row">
+  <div class="col-xs-12 col-sm-offset-1 col-sm-10">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h1 class="text-center">Ride Info</h1>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-6 col-xs-12">
+            <h3>Details About the Trip</h3>
+            <hr />
+            
+            <p>
+              <strong>Destination:</strong>
+              <%= @post.destination %>
+            </p>
 
-<p>
-  <strong>Pickup Location:</strong>
-  <%= @post.departure_location %>
-</p>
+            <p>
+              <strong>Pickup Location:</strong>
+              <%= @post.departure_location %>
+            </p>
 
-<p>
-  <strong>Date of Departure:</strong>
-  <%= @post.departure_time %>
-</p>
+            <p>
+              <strong>Date of Departure:</strong>
+              <%= @post.departure_time %>
+            </p>
 
-<p>
-  <strong>Maximum Number of Passengers:</strong>
-  <%= @post.number_passengers %>
-</p>
+            <p>
+              <strong>Maximum Number of Passengers:</strong>
+              <%= @post.number_passengers %>
+            </p>
+          </div>
+          <div class="col-sm-6 col-xs-12">
+            <h3>Who's Going</h3>
+            <hr />
+            <ul>
+              <li>Test person 1</li>
+              <li>Test person 2</li>
+              <li>Test person 3</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6 col-sm-5 col-sm-offset-1">
+      <button class="btn btn-block btn-info btn-lg">Last</button>
+    </div>
+    <div class="col-xs-6 col-sm-5">
+      <button class="btn btn-block btn-info btn-lg">Next</button>
+    </div>
+  </div>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

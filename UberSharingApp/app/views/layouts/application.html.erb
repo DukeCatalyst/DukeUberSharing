@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <title>UberSharingApp</title>
     <!-- Required meta tags -->
@@ -16,7 +15,6 @@
     <%= csrf_meta_tags %>
     <%= include_gon %>
   </head>
-
   <body>
   <!-- Navbar -->
   <nav class="navbar navbar-default navbar-fixed-top">
@@ -28,13 +26,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Duke Ride Sharing</a>
+        <%= link_to 'Duke Ride Sharing', :posts, class: "navbar-brand" %>
+        
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><%= link_to 'Home', :posts %></li>
-          <li><a href="#about">Posts</a></li>
-          <li><a href="#contact">About</a></li>
+          <li class="active"><%= link_to 'Posts', :posts %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
