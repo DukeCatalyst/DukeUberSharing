@@ -12,4 +12,7 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+//= require posts_index.js
+
+
+

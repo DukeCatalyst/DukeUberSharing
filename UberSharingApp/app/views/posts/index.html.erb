@@ -1,33 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<h1 class="text-center">Posted Rides</h1>
+<h1 class="text-center">Current Rides</h1>
 <hr />
-  <div class="panel-group">
     <% @posts.each do |post| %>
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          Destination:
-          <%= post.destination %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+          <div class="post panel panel-primary" id="<%= post.id %>">
+            <div class="panel-heading">
+              Destination: <%= post.destination %>
+            </div>
+            <div class="panel-body">
+              Pickup Location: <%= post.departure_location %> <br />
+              Departure Time: <%= post.departure_time %> <br>
+              Maximum Number of Passengers: <%= post.number_passengers %>
+            </div>
+            <div class="panel-footer">
+              <%= link_to 'Show', post %>
+              <%= link_to 'Edit', edit_post_path(post) %>
+              <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure you want to delete your post?' } %>
+            </div>
+          </div>
         </div>
-        <div class="panel-body">
-          Pickup Location: <td><%= post.departure_location %>
-        </div>
-        <div class="panel-body">
-          Departure Time:
-          <td><%= post.date %> <td><%= post.time %>
-        </div>
-        <div class="panel-body">
-          Maximum Number of Passengers: 
-          <td><%= post.number_passengers %>
-        </div>
-        <div class="panel-footer">
-        <%= link_to 'Show', post %>
-        <%= link_to 'Edit', edit_post_path(post) %>
-        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
-      </div>
+      </div>  
     <% end %>
-  </div>
-<br>
 
-<%= link_to 'New Post', new_post_path %>
+
+<%= javascript_include_tag 'posts_index' %>

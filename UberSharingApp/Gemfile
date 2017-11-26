@@ -32,7 +32,14 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Devise gem for handling users
 gem 'devise'
+
+# Figaro for configuring rails environmental variables
+gem 'figaro'
+
+# Gon for easily pushing rails variables to javascript files 
+gem 'gon'
 
 gem 'json', github: 'flori/json', branch: 'v1.8'
 

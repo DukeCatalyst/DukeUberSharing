@@ -14,6 +14,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
+    <%= include_gon %>
   </head>
 
   <body>
@@ -37,6 +38,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
+            <li><%= link_to 'Create Post', :new_post %></li>
             <li><%= link_to 'Logout', :destroy_user_session, :method => :delete %></li>
           <% else %>
             <li><%= link_to 'Login', :new_user_session %></li>

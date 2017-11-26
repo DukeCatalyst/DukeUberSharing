@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171105180927) do
+ActiveRecord::Schema.define(version: 20171122203923) do
 
   create_table "posts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "destination"
-    t.date "date"
-    t.time "time"
     t.integer "number_passengers"
     t.string "departure_location"
+    t.datetime "departure_time"
   end
 
   create_table "users", force: :cascade do |t|
