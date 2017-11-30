@@ -1,14 +1,13 @@
 <br/>
 <div class="row">
-  <div class="col-xs-12 col-sm-offset-1 col-sm-10">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h1 class="text-center">Ride Info</h1>
-      </div>
+  <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+  <h1>Ride Info</h1>
+  <hr>
+    <div class="panel panel-primary">
       <div class="panel-body">
         <div class="row">
-          <div class="col-sm-6 col-xs-12">
-            <h3>Details About the Trip</h3>
+          <div class="col-sm-6 col-xs-12 left-panel">
+            <h3 class="text-center">Details</h3>
             <hr />
             
             <p>
@@ -22,28 +21,86 @@
             </p>
 
             <p>
-              <strong>Date of Departure:</strong>
+              <strong>Time Leaving:</strong>
               <%= @post.departure_time %>
             </p>
 
             <p>
-              <strong>Maximum Number of Passengers:</strong>
+              <strong>Max Number of Passengers:</strong>
               <%= @post.number_passengers %>
             </p>
           </div>
           <div class="col-sm-6 col-xs-12">
-            <h3>Who's Going</h3>
+            <h3 class="text-center">Who's Going</h3>
             <hr />
             <ul>
-              <li>Test person 1</li>
-              <li>Test person 2</li>
-              <li>Test person 3</li>
+              <% @post.riders.each do |id| %>
+                <li>
+                  <%= link_to User.find(id).email, view_profile_path(:id => id) %>
+                  <% if id === @post.creator %>
+                    <span class="badge badge-primary">Creator</span>
+                  <% end %>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="col-xs-12 col-sm-5">
+    <h1>People Going</h1>
+    <hr>
+    <div class="panel-group" id="accordion">
+      <% @post.riders.each_with_index do |id,index| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index %>">
+                <%= User.find(id).name %>
+              </a>
+            </h4>
+          </div>
+          <div id="collapse<%= index %>" class="panel-collapse collapse">
+            <div class="panel-body">
+              <p><strong>Email Address:</strong> test@duke.edu</p>
+              <p><strong>Phone Number:</strong> 336234-234234</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+
+  <% if @post.creator === current_user.id %>
+    <div class="row">
+      <div class="col-xs-6 col-sm-offset-1 col-sm-5">
+        <%= link_to 'Edit Post', :edit_post, class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+      <div class="col-xs-6 col-sm-5">
+        <%= link_to 'Delete Post', @post, method: :delete, class: "btn btn-danger btn-lg btn-block", data: { confirm: 'Are you sure you want to delete your post?' } %>
+      </div>
+    </div>
+    <br/>     
+  <% elsif !@post.riders.include?(current_user.id) %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-offset-1 col-sm-10">
+        <%= link_to 'Join Ride', :rider_request, class: "btn btn-default btn-lg btn-block" %>
+      </div>
+    </div>
+    <br/>     
+  <% else %>
+  <div class="row">
+      <div class="col-xs-12 col-sm-offset-1 col-sm-10">
+        <%= link_to 'Leave Ride', :rider_request, class: "btn btn-default btn-lg btn-block" %>
+      </div>
+    </div>
+    <br/>     
+  <% end %>
 
   <div class="row">
     <div class="col-xs-6 col-sm-5 col-sm-offset-1">
@@ -53,6 +110,3 @@
       <button class="btn btn-block btn-info btn-lg">Next</button>
     </div>
   </div>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>

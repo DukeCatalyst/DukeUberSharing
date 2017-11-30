@@ -42,10 +42,12 @@
     <div class="col-sm-10 col-sm-offset-1 col-xs-12">
       <div class="form-group">
         <%= form.label :number_passengers %>
-        <%= form.select :number_passengers, [1,2,3,4,5,6], id: :post_number_passengers, autofocus: true, class: "form-control" %>
+        <%= form.select :number_passengers, [2,3,4,5,6], id: :post_number_passengers, autofocus: true, class: "form-control" %>
       </div>
     </div>
   </div>
+
+  <%= form.hidden_field :creator, :value => current_user.id %>
 
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1 col-xs-12">

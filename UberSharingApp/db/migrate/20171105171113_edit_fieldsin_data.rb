@@ -5,8 +5,8 @@ class EditFieldsinData < ActiveRecord::Migration[5.1]
     add_column :posts, :time, :time
     add_column :posts, :number_passengers, :integer
     add_column :posts, :departure_location, :string
-    remove_column :posts :name
-    remove_column :posts :content
-    remove_column :posts :title
+    remove_column :posts, :name
+    remove_column :posts, :content
+    remove_column :posts, :title
   end
 end

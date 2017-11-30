@@ -12,7 +12,8 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require posts_index.js
+//= require posts_redirect.js
+//= require posts_clock.js
 
 
 

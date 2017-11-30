@@ -2,20 +2,22 @@
 <hr />
     <% @posts.each do |post| %>
       <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
           <div class="post panel panel-primary" id="<%= post.id %>">
             <div class="panel-heading">
-              Destination: <%= post.destination %>
+              <h2><%= post.destination %></h2>
             </div>
             <div class="panel-body">
-              Pickup Location: <%= post.departure_location %> <br />
-              Departure Time: <%= post.departure_time %> <br>
-              Maximum Number of Passengers: <%= post.number_passengers %>
+            <div class="row">
+              <div class="col-xs-6">
+                <h5><strong> Pickup Location:</strong> <%= post.departure_location %></h5><br />
+                <h5><strong>Departure Time:</strong> <%= post.departure_time %></h5><br >
+                <h5><strong>Spots left:</strong> <%= post.number_passengers - post.riders.count%></h5>
+              </div>
+              <div class="col-xs-6">
+                <h1 class="text-center clock"></h1>
+              </div>
             </div>
-            <div class="panel-footer">
-              <%= link_to 'Show', post %>
-              <%= link_to 'Edit', edit_post_path(post) %>
-              <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure you want to delete your post?' } %>
             </div>
           </div>
         </div>
@@ -23,4 +25,5 @@
     <% end %>
 
 
-<%= javascript_include_tag 'posts_index' %>
+<%= javascript_include_tag 'posts_redirect' %>
+<%= javascript_include_tag 'posts_clock' %>
