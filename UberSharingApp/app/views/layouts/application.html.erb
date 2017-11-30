@@ -37,7 +37,7 @@
           <% if user_signed_in? %>
             <li><%= link_to 'Create Post', :new_post %></li>
             <li><%= link_to 'Your Rides', :myposts %></li>
-            <li><%= link_to 'View Profile', view_profile_path(:id => current_user.id)  %></li>
+            <li><%= link_to 'Edit Profile', :edit_user_registration %></li>
             <li><%= link_to 'Logout', :destroy_user_session, :method => :delete %></li>
           <% else %>
             <li><%= link_to 'Login', :new_user_session %></li>
@@ -48,7 +48,11 @@
   </nav>
   <br />
 
+  <div class="application-container">
+  
     <%= yield %>
+
+  </div>
 
   </body>
 

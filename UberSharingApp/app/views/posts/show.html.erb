@@ -1,13 +1,13 @@
 <br/>
 <div class="row">
   <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-  <h1>Ride Info</h1>
+  <h1 class="text-center">Ride Info</h1>
   <hr>
     <div class="panel panel-primary">
       <div class="panel-body">
         <div class="row">
-          <div class="col-sm-6 col-xs-12 left-panel">
-            <h3 class="text-center">Details</h3>
+          <div class="col-xs-12 left-panel">
+            <h2 class="text-center">Details About the Trip</h2>
             <hr />
             
             <p>
@@ -21,8 +21,8 @@
             </p>
 
             <p>
-              <strong>Time Leaving:</strong>
-              <%= @post.departure_time %>
+              <strong>Leaves at:</strong>
+              <%= @post.departure_time.strftime('%I:%M %p on %A, %B %d, %Y') %>
             </p>
 
             <p>
@@ -30,42 +30,37 @@
               <%= @post.number_passengers %>
             </p>
           </div>
-          <div class="col-sm-6 col-xs-12">
-            <h3 class="text-center">Who's Going</h3>
-            <hr />
-            <ul>
-              <% @post.riders.each do |id| %>
-                <li>
-                  <%= link_to User.find(id).email, view_profile_path(:id => id) %>
-                  <% if id === @post.creator %>
-                    <span class="badge badge-primary">Creator</span>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="col-xs-12 col-sm-5">
-    <h1>People Going</h1>
+    <h1 class="text-center">People Going</h1>
     <hr>
     <div class="panel-group" id="accordion">
       <% @post.riders.each_with_index do |id,index| %>
+      <% @rider = User.find(id) %>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index %>">
-                <%= User.find(id).name %>
+                <%= @rider.name %>
               </a>
+              &nbsp;
+              <% if @rider.id === @post.creator %>
+                <span class="badge badge-primary">Creator</span>
+              <% end %>
             </h4>
           </div>
-          <div id="collapse<%= index %>" class="panel-collapse collapse">
+          <% if @rider.id === @post.creator %>
+            <div id="collapse<%= index %>" class="panel-collapse collapse in">
+          <% else %>
+            <div id="collapse<%= index %>" class="panel-collapse collapse">
+          <% end %>
             <div class="panel-body">
-              <p><strong>Email Address:</strong> test@duke.edu</p>
-              <p><strong>Phone Number:</strong> 336234-234234</p>
+              <p><strong>Email Address:</strong>&nbsp;<%= @rider.email %> </p>
+              <p><strong>Phone Number:</strong>&nbsp;<%= @rider.phone %></p>
             </div>
           </div>
         </div>

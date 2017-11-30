@@ -11,7 +11,7 @@
             <div class="row">
               <div class="col-xs-6">
                 <h5><strong> Pickup Location:</strong> <%= post.departure_location %></h5><br />
-                <h5><strong>Departure Time:</strong> <%= post.departure_time %></h5><br >
+                <h5><strong>Departure Time:</strong> <%= post.departure_time.strftime('%I:%M %p on %A, %B %d, %Y') %></h5><br >
                 <h5><strong>Spots left:</strong> <%= post.number_passengers - post.riders.count%></h5>
               </div>
               <div class="col-xs-6">
