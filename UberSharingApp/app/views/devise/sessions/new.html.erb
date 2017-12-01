@@ -1,3 +1,17 @@
+<% if devise_error_messages! %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Holy guacamole!</strong> You need to correct the following probs with your account registration:
+    <ul>
+      <% resource.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="row">
 
   <div class="col-sm-6 col-xs-12">
@@ -44,7 +58,6 @@
     <hr/>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
 
       <div class="row">
         <div class="col-xs-6">
@@ -70,7 +83,7 @@
 
       <div class="form-group">
         <%= f.label :phone %>
-        <%= f.telephone_field :phone, autofocus: true, class: "form-control" %>
+        <%= f.telephone_field :phone, autofocus: true, class: "form-control", placeholder: "111-555-5555" %>
       </div>
 
       <div class="form-group">
