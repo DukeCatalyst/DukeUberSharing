@@ -52,10 +52,17 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :unconfirmed_email %>
+        <%= f.email_field :unconfirmed_email, autofocus: true, class: "form-control", placeholder: "owen.astrachan@duke.edu" %>
+        <small class="form-text text-muted">(Must be Duke email)</small>
+      </div>
+
+      <div class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "owen.astrachan@duke.edu" %>
         <small class="form-text text-muted">(Must be Duke email)</small>
       </div>
+
 
       <div class="form-group">
         <%= f.label :phone %>
