@@ -45,7 +45,7 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index %>">
-                <%= @rider.name %>
+                <%= @rider.first_name + " " + @rider.last_name %>
               </a>
               &nbsp;
               <% if @rider.id === @post.creator %>
