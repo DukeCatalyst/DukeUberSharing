@@ -67,19 +67,23 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
 
-  # Configuration for the Action Mailer Controller
-  config.action_mailer.delivery_method = :smtp 
-  config.action_mailer.perform_deliveries = true
+ # Configuration for the Action Mailer Controller
+ config.action_mailer.delivery_method = :smtp 
+ config.action_mailer.default_url_options = {
+   :host => ENV["HOST_URL"]
+ }
+ config.action_mailer.perform_deliveries = true
 
-  config.action_mailer.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => "587",
-    :domain => "gmail.com",
-    :user_name => Rails.application.secrets.app_email_address,
-    :password => Rails.application.secrets.app_email_password,
-    :authentication => "plain",
-    :enable_starttls_auto => true
-   }
+ config.action_mailer.smtp_settings = {
+   :address => "smtp.gmail.com",
+   :port => "587",
+   :domain => "gmail.com",
+   :user_name => ENV["APP_EMAIL_ADDRESS"],
+   :password => ENV["APP_EMAIL_PASSWORD"],
+   :authentication => "plain",
+   :enable_starttls_auto => true
+  }
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
